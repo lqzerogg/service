@@ -1,3 +1,9 @@
 var server = require("./server");
 var router = require("./router");
-server.start(router.route);
+var requestHandler = require("./requestHandler");
+var handle = {
+	"/": requestHandler.start,
+	"/start": requestHandler.start,
+	"/preload": requestHandler.preload
+}
+server.start(router.route, handle);
